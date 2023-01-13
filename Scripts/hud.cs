@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class hud : MonoBehaviour
+public class Hud : MonoBehaviour
 {
     public Text _playerScoreText;
     public Text _computerScoreText;

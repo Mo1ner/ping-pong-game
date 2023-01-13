@@ -12,7 +12,7 @@ public class Game : MonoBehaviour
     private int _computerScore = 0;
     private int _winningScore = 3;
     
-    private hud _hud;
+    private Hud _hud;
     private GameObject _hudCanvas;
     private GameObject _paddleComputer;
     public GameState _gameState = GameState.Launched; 
@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
     {
         _ball = GameObject.Find("Ball");
         _hudCanvas = GameObject.Find("HUD_Canvas");
-        _hud = _hudCanvas.GetComponent<hud>();
+        _hud = _hudCanvas.GetComponent<Hud>();
         _paddleComputer = GameObject.Find("Computer");
         
         _hud._playAgain.text = "PRESS SPACE TO PLAY";

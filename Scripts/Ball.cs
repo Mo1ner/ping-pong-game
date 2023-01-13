@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
 {
     public Vector2 _direction;
     private bool _assignedPoint;
+    private AudioSource _audioSource;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private float _speed = 7f;
 
@@ -15,6 +16,7 @@ public class Ball : MonoBehaviour
 
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody2D>();
         _direction = new Vector2(Random.Range(.5f, 1f), Random.Range(.5f, 1f));
         _game = GameObject.Find("Game").GetComponent<Game>();
@@ -22,7 +24,12 @@ public class Ball : MonoBehaviour
 
     void Update()
     {
-        if (_game._gameState != Game.GameState.Paused)
+        if (_game._gameState == Game.GameState.Paused)
+        {
+            _rb.velocity = Vector2.zero;
+            /*BallMove();*/
+        }
+        else
         {
             BallMove();
         }
@@ -65,6 +72,7 @@ public class Ball : MonoBehaviour
 
             if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Computer"))
             {
+                _audioSource.Play();
                 _direction.x = -_direction.x;
             }
         }
