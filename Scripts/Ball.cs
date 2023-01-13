@@ -27,6 +27,7 @@ public class Ball : MonoBehaviour
         if (_game._gameState == Game.GameState.Paused)
         {
             _rb.velocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
             /*BallMove();*/
         }
         else
